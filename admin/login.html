@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[MZ] Admin — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- Particles canvas -->
+  <canvas id="particles"></canvas>
+
+  <div class="login-wrapper">
+    <div class="login-card">
+
+      <!-- Logo -->
+      <div class="login-logo">
+        <span class="bracket">[</span>MZ<span class="bracket">]</span>
+      </div>
+      <h1 class="login-title">Admin Dashboard</h1>
+      <p class="login-subtitle mono">Accesso riservato &mdash; inserisci le credenziali</p>
+
+      <!-- Form -->
+      <form class="login-form" id="loginForm" novalidate autocomplete="off">
+
+        <div class="field-group" id="fieldUsername">
+          <label class="field-label" for="username">
+            <i class="fa-solid fa-user"></i> Nome utente
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="field-input"
+            placeholder="Manuel Zambelli"
+            autocomplete="username"
+            required
+          />
+        </div>
+
+        <div class="field-group" id="fieldPassword">
+          <label class="field-label" for="password">
+            <i class="fa-solid fa-lock"></i> Password
+          </label>
+          <div class="password-wrap">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="field-input"
+              placeholder="••••••••••"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="toggle-pw" id="togglePw" aria-label="Mostra password">
+              <i class="fa-solid fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="login-error" id="loginError">
+          <i class="fa-solid fa-circle-xmark"></i>
+          <span id="loginErrorMsg">Credenziali non valide.</span>
+        </div>
+
+        <button type="submit" class="login-btn" id="loginBtn">
+          <i class="fa-solid fa-right-to-bracket" id="loginBtnIcon"></i>
+          <span id="loginBtnText">Accedi</span>
+        </button>
+
+      </form>
+
+      <p class="login-footer mono">// accesso locale protetto</p>
+    </div>
+  </div>
+
+  <script>
+    /* ── Particles ── */
+    (function () {
+      const canvas = document.getElementById('particles');
+      const ctx = canvas.getContext('2d');
+      let particles = [], W, H;
+
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+
+      function Particle() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.r = Math.random() * 1.5 + 0.5;
+        this.a = Math.random() * 0.4 + 0.1;
+      }
+
+      function init() {
+        particles = [];
+        const n = Math.min(Math.floor(W * H / 14000), 60);
+        for (let i = 0; i < n; i++) particles.push(new Particle());
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const d = Math.hypot(p.x - q.x, p.y - q.y);
+            if (d < 110) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0,212,255,${(1 - d / 110) * 0.12})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0,212,255,${p.a})`;
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', () => { resize(); init(); });
+      resize(); init(); draw();
+    })();
+
+    /* ── Toggle password visibility ── */
+    document.getElementById('togglePw').addEventListener('click', function () {
+      const input = document.getElementById('password');
+      const icon  = document.getElementById('eyeIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+      }
+    });
+
+    /* ── Clear errors on input ── */
+    ['username', 'password'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        document.getElementById('loginError').classList.remove('show');
+        document.getElementById('field' + id.charAt(0).toUpperCase() + id.slice(1)).classList.remove('error');
+      });
+    });
+
+    /* ── Login submit ── */
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const btn      = document.getElementById('loginBtn');
+      const btnIcon  = document.getElementById('loginBtnIcon');
+      const btnText  = document.getElementById('loginBtnText');
+      const errBox   = document.getElementById('loginError');
+      const errMsg   = document.getElementById('loginErrorMsg');
+
+      // Validate
+      let hasError = false;
+      if (!username) { document.getElementById('fieldUsername').classList.add('error'); hasError = true; }
+      if (!password) { document.getElementById('fieldPassword').classList.add('error'); hasError = true; }
+      if (hasError) return;
+
+      // Loading state
+      btn.disabled  = true;
+      btnIcon.className = 'fa-solid fa-spinner fa-spin';
+      btnText.textContent = 'Accesso in corso...';
+      errBox.classList.remove('show');
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.ok) {
+          // Success — shake card then redirect
+          btnIcon.className = 'fa-solid fa-circle-check';
+          btnText.textContent = 'Accesso riuscito!';
+          btn.classList.add('success');
+          setTimeout(() => { window.location.href = '/dashboard.html'; }, 600);
+        } else {
+          throw new Error(data.error || 'Credenziali non valide.');
+        }
+
+      } catch (err) {
+        // Error state
+        errMsg.textContent = err.message;
+        errBox.classList.add('show');
+        document.getElementById('fieldPassword').classList.add('error');
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+
+        btn.disabled  = false;
+        btnIcon.className = 'fa-solid fa-right-to-bracket';
+        btnText.textContent = 'Accedi';
+      }
+    });
+
+    /* ── Enter key on username → focus password ── */
+    document.getElementById('username').addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        document.getElementById('password').focus();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -5,7 +5,32 @@
 
 'use strict';
 
+// ─── Logout ───────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', async () => {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.replace('/login.html');
+    });
+  }
+});
+
+// ─── 401 interceptor: sessione scaduta → redirect login ───────
+const _fetch = window.fetch;
+window.fetch = async function (...args) {
+  const res = await _fetch(...args);
+  if (res.status === 401) {
+    // Clone per non consumare il body
+    const cloned = res.clone();
+    window.location.replace('/login.html');
+    return cloned;
+  }
+  return res;
+};
+
 // ─── State ────────────────────────────────────────────────────
+
 let currentData = null;
 
 // ─── DOM refs ─────────────────────────────────────────────────
