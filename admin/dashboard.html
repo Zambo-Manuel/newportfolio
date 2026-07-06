@@ -373,8 +373,8 @@
     try {
       const res = await fetch('/api/auth-check');
       const d = await res.json();
-      if (!d.authenticated) window.location.replace('/login.html');
-    } catch { window.location.replace('/login.html'); }
+      if (!d.authenticated) window.location.replace('/admin');
+    } catch { window.location.replace('/admin'); }
   })();
 </script>
 <script src="dashboard.js"></script>

@@ -195,7 +195,7 @@
           btnIcon.className = 'fa-solid fa-circle-check';
           btnText.textContent = 'Accesso riuscito!';
           btn.classList.add('success');
-          setTimeout(() => { window.location.href = '/dashboard.html'; }, 600);
+          setTimeout(() => { window.location.href = '/admin'; }, 600);
         } else {
           throw new Error(data.error || 'Credenziali non valide.');
         }

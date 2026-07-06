@@ -181,14 +181,19 @@ app.get('/api/git-status', requireAuth, (_req, res) => {
   }
 });
 
-// ── Root: redirect a login o dashboard ───────────────────────
-app.get('/', (req, res) => {
+// ── /admin — entry point unico ────────────────────────────────
+// Autenticato   → serve dashboard
+// Non autenticato → serve login
+app.get('/admin', (req, res) => {
   if (req.session && req.session.authenticated) {
-    res.redirect('/dashboard.html');
+    res.sendFile(path.join(__dirname, 'dashboard.html'));
   } else {
-    res.redirect('/login.html');
+    res.sendFile(path.join(__dirname, 'login.html'));
   }
 });
+
+// ── Root: redirect a /admin ───────────────────────────────────
+app.get('/', (req, res) => res.redirect('/admin'));
 
 // ── Start ──────────────────────────────────────────────────────
 app.listen(PORT, () => {

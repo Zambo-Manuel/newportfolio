@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async () => {
       await fetch('/api/logout', { method: 'POST' });
-      window.location.replace('/login.html');
+      window.location.replace('/admin');
     });
   }
 });
@@ -23,7 +23,7 @@ window.fetch = async function (...args) {
   if (res.status === 401) {
     // Clone per non consumare il body
     const cloned = res.clone();
-    window.location.replace('/login.html');
+    window.location.replace('/admin');
     return cloned;
   }
   return res;
