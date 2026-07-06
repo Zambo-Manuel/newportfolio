@@ -207,6 +207,7 @@ function initCounters() {
 // ── PRIVACY & COOKIE POLICY DIALOGS ────────────────────────────
 function initPrivacyAndCookies() {
   const privacyModal = document.getElementById('privacyModal');
+  const openPrivacyBtn = document.getElementById('openPrivacyBtn');
   const footerPrivacyLink = document.getElementById('footerPrivacyLink');
   const closePrivacyBtn = document.getElementById('closePrivacyBtn');
   const acceptPrivacyBtn = document.getElementById('acceptPrivacyBtn');
@@ -220,10 +221,15 @@ function initPrivacyAndCookies() {
     if (privacyModal) privacyModal.classList.remove('open');
   };
 
+  if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', openModal);
   if (footerPrivacyLink) footerPrivacyLink.addEventListener('click', openModal);
   if (closePrivacyBtn) closePrivacyBtn.addEventListener('click', closeModal);
   if (acceptPrivacyBtn) {
-    acceptPrivacyBtn.addEventListener('click', closeModal);
+    acceptPrivacyBtn.addEventListener('click', () => {
+      closeModal();
+      const checkbox = document.getElementById('cf-privacy');
+      if (checkbox) checkbox.checked = true;
+    });
   }
 
   // Chiusura al click esterno
@@ -249,10 +255,20 @@ function initContactForm() {
     let valid = true;
 
     inputs.forEach(input => {
-      input.style.borderColor = '';
-      if (!input.value.trim()) { input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false; }
-      if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-        input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false;
+      if (input.type === 'checkbox') {
+        const wrapper = input.closest('.checkbox-wrapper');
+        if (!input.checked) {
+          if (wrapper) wrapper.style.color = '#ef4444';
+          valid = false;
+        } else {
+          if (wrapper) wrapper.style.color = '';
+        }
+      } else {
+        input.style.borderColor = '';
+        if (!input.value.trim()) { input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false; }
+        if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false;
+        }
       }
     });
 
@@ -317,7 +333,13 @@ function initContactForm() {
     i.addEventListener('input', () => { i.style.borderColor = ''; });
   });
 
-
+  const privacyCheckbox = document.getElementById('cf-privacy');
+  if (privacyCheckbox) {
+    privacyCheckbox.addEventListener('change', () => {
+      const wrapper = privacyCheckbox.closest('.checkbox-wrapper');
+      if (wrapper) wrapper.style.color = '';
+    });
+  }
 }
 
 // ── DOM POPULATION HELPERS ────────────────────────────────────
