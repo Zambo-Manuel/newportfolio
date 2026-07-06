@@ -1,0 +1,16 @@
+{
+  "name": "mz-admin-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard locale per aggiornare la pagina personale di Manuel Zambelli",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "author": "Manuel Zambelli",
+  "license": "MIT"
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manuel Zambelli - Pagina personale. Sviluppatore, appassionato di tecnologia. Scopri i miei contatti, progetti e competenze." />
+  <meta name="keywords" content="Manuel Zambelli, developer, portfolio, tecnologia, contatti" />
+  <meta name="author" content="Manuel Zambelli" />
+  <meta property="og:title" content="Manuel Zambelli — Personal Page" />
+  <meta property="og:description" content="La pagina personale di Manuel Zambelli: link, contatti, skills e progetti." />
+  <title>Manuel Zambelli — Personal Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">[</span>MZ<span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#links" class="nav-link">Links</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        <li><a href="#contact" class="nav-link">Contatti</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#links" class="mob-link">Links</a></li>
+      <li><a href="#skills" class="mob-link">Skills</a></li>
+      <li><a href="#timeline" class="mob-link">Timeline</a></li>
+      <li><a href="#contact" class="mob-link">Contatti</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-image"></div>
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge" id="heroBadge">
+        <span class="pulse-dot"></span>
+        <span class="badge-text">Disponibile per nuove opportunità</span>
+      </div>
+      <div class="avatar-container">
+        <div class="avatar-ring"></div>
+        <img src="avatar.png" alt="Manuel Zambelli" class="avatar-img" id="avatarImg" />
+        <div class="avatar-glow"></div>
+      </div>
+      <h1 class="hero-name" id="heroName">
+        Manuel <span class="gradient-text">Zambelli</span>
+      </h1>
+      <div class="hero-tagline">
+        <span class="mono-text">&gt;_</span>
+        <span class="typewriter" id="typewriter"></span>
+        <span class="cursor-blink">|</span>
+      </div>
+      <div class="hero-meta" id="heroMeta">
+        <span><i class="fa-solid fa-calendar-days"></i> Nato il 01/10/2010</span>
+        <span><i class="fa-solid fa-location-dot"></i> Italia</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i> Contattami
+        </a>
+        <a href="#links" class="btn btn-ghost">
+          <i class="fa-solid fa-link"></i> I miei link
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 01</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-intro" id="aboutIntro">
+            Ciao! Sono <strong>Manuel Zambelli</strong>, appassionato di tecnologia, informatica e innovazione digitale. Mi piace esplorare il confine tra creatività e logica, costruendo cose che funzionano <em>e</em> che hanno un senso.
+          </p>
+          <p id="aboutBody">
+            Amo lavorare su progetti che abbiano un impatto reale, dalla progettazione di interfacce utente intuitive allo sviluppo di sistemi back-end efficienti. Sono sempre alla ricerca di nuove sfide e opportunità di crescita.
+          </p>
+          <p id="aboutExtra">
+            Quando non sono davanti a uno schermo mi interesso di gaming, elettronica DIY e rimango aggiornato sulle ultime tendenze nel mondo tech.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-number" id="stat-projects" data-target="15">15+</span>
+              <span class="stat-label">Progetti completati</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="stat-years" data-target="3">3+</span>
+              <span class="stat-label">Anni di esperienza</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="stat-tech" data-target="8">8+</span>
+              <span class="stat-label">Tecnologie</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-info">
+          <div class="info-card">
+            <div class="info-card-header">
+              <i class="fa-solid fa-terminal"></i>
+              <span class="mono-text">whoami.info</span>
+            </div>
+            <ul class="info-list">
+              <li><span class="info-key">Nome</span><span class="info-val" id="info-name">Manuel Zambelli</span></li>
+              <li><span class="info-key">Data di nascita</span><span class="info-val" id="info-birthday">01/10/2010</span></li>
+              <li><span class="info-key">Nazionalità</span><span class="info-val" id="info-nationality">🇮🇹 Italiana</span></li>
+              <li><span class="info-key">Focus</span><span class="info-val" id="info-focus">Dev &amp; Tech</span></li>
+              <li><span class="info-key">Lingue</span><span class="info-val" id="info-languages">IT 🇮🇹 EN 🇬🇧</span></li>
+              <li>
+                <span class="info-key">Status</span>
+                <span class="info-val status-green" id="info-status">
+                  <span class="pulse-dot small"></span> Disponibile
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LINKS ===== -->
+  <section class="section section-alt" id="links">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 02</span>
+        <h2 class="section-title">I miei <span class="gradient-text">Link</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-subtitle">Tutti i miei profili e risorse in un unico posto.</p>
+      <!-- Populated dynamically by script.js -->
+      <div class="links-grid" id="linksGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03</span>
+        <h2 class="section-title">Le mie <span class="gradient-text">Skills</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-layout">
+        <!-- Populated dynamically -->
+        <div class="skills-bars" id="skillsBars"></div>
+        <div class="skills-tags">
+          <h3 class="skills-tags-title">Tecnologie &amp; Strumenti</h3>
+          <div class="tags-cloud" id="skillsTags"></div>
+          <div class="currently-learning">
+            <div class="cl-header">
+              <span class="pulse-dot"></span>
+              <span class="mono-text">currently_learning</span>
+            </div>
+            <div class="cl-items" id="skillsLearning"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section class="section section-alt" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 04</span>
+        <h2 class="section-title">Il mio <span class="gradient-text">Percorso</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <!-- Populated dynamically -->
+      <div class="timeline" id="timelineContainer"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 05</span>
+        <h2 class="section-title">Contat<span class="gradient-text">tami</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <h3>Hai un progetto in mente?</h3>
+          <p>Sono sempre felice di sentire nuove idee, collaborazioni o semplicemente fare due chiacchiere di tecnologia. Non esitare a scrivermi!</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="cm-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="cm-info">
+                <span class="cm-label">Email</span>
+                <a href="mailto:manuel.zambelli@email.com" class="cm-value" id="contact-email-link">manuel.zambelli@email.com</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="cm-icon"><i class="fa-brands fa-telegram"></i></div>
+              <div class="cm-info">
+                <span class="cm-label">Telegram</span>
+                <a href="https://t.me/manuelzambelli" target="_blank" rel="noopener" class="cm-value" id="contact-telegram-link">@manuelzambelli</a>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="cm-icon"><i class="fa-brands fa-linkedin"></i></div>
+              <div class="cm-info">
+                <span class="cm-label">LinkedIn</span>
+                <a href="https://linkedin.com/in/manuelzambelli" target="_blank" rel="noopener" class="cm-value" id="contact-linkedin-link">Manuel Zambelli</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="cf-name" class="form-label">Nome</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user input-icon"></i>
+                <input type="text" id="cf-name" name="name" class="form-input" placeholder="Il tuo nome" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-email" class="form-label">Email</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="cf-email" name="email" class="form-input" placeholder="la-tua@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-subject" class="form-label">Oggetto</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-tag input-icon"></i>
+                <input type="text" id="cf-subject" name="subject" class="form-input" placeholder="Di cosa vuoi parlare?" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-message" class="form-label">Messaggio</label>
+              <div class="input-wrapper textarea-wrapper">
+                <i class="fa-solid fa-message input-icon input-icon-top"></i>
+                <textarea id="cf-message" name="message" class="form-input form-textarea" placeholder="Scrivi il tuo messaggio qui..." rows="5" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span class="btn-text">Invia messaggio</span>
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fa-solid fa-circle-check"></i>
+              Messaggio inviato! Ti risponderò al più presto.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo"><span class="logo-bracket">[</span>MZ<span class="logo-bracket">]</span></span>
+          <p>Manuel Zambelli<br /><span class="mono-text">// developer &amp; tech enthusiast</span></p>
+        </div>
+        <div class="footer-links">
+          <span class="footer-title">Quick Links</span>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#links">Links</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <span class="footer-title">Social</span>
+          <div class="social-icons">
+            <a href="#" id="footer-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" id="footer-github" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" id="footer-twitter" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" id="footer-telegram" target="_blank" rel="noopener" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" id="footer-instagram" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="mono-text">© 2026 Manuel Zambelli. Built with <i class="fa-solid fa-heart" style="color: var(--accent-cyan)"></i> &amp; code.</span>
+        <a href="#hero" class="back-to-top" aria-label="Torna su">
+          <i class="fa-solid fa-chevron-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

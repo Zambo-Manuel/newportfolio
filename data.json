@@ -1,0 +1,186 @@
+{
+  "profile": {
+    "name": "Manuel Zambelli",
+    "birthday": "01/10/2010",
+    "location": "Italia",
+    "taglines": [
+      "Developer & Tech Enthusiast",
+      "Web Developer",
+      "Open Source Lover",
+      "Problem Solver",
+      "Lifelong Learner",
+      "Digital Creator"
+    ],
+    "available": true,
+    "availableText": "Disponibile per nuove opportunità",
+    "nationality": "🇮🇹 Italiana",
+    "focus": "Dev & Tech",
+    "languages": "IT 🇮🇹 EN 🇬🇧",
+    "avatar": "avatar.png"
+  },
+  "about": {
+    "intro": "Ciao! Sono <strong>Manuel Zambelli</strong>, appassionato di tecnologia, informatica e innovazione digitale. Mi piace esplorare il confine tra creatività e logica, costruendo cose che funzionano <em>e</em> che hanno un senso.",
+    "body": "Amo lavorare su progetti che abbiano un impatto reale, dalla progettazione di interfacce utente intuitive allo sviluppo di sistemi back-end efficienti. Sono sempre alla ricerca di nuove sfide e opportunità di crescita.",
+    "extra": "Quando non sono davanti a uno schermo mi interesso di gaming, elettronica DIY e rimango aggiornato sulle ultime tendenze nel mondo tech.",
+    "stats": {
+      "projects": 15,
+      "years": 3,
+      "technologies": 8
+    }
+  },
+  "links": [
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "desc": "Profilo professionale",
+      "url": "https://www.linkedin.com/in/manuelzambelli",
+      "icon": "fa-brands fa-linkedin",
+      "colorClass": "link-linkedin",
+      "external": true
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "desc": "I miei repository",
+      "url": "https://github.com/manuelzambelli",
+      "icon": "fa-brands fa-github",
+      "colorClass": "link-github",
+      "external": true
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "desc": "Scrivimi direttamente",
+      "url": "mailto:manuel.zambelli@email.com",
+      "icon": "fa-solid fa-envelope",
+      "colorClass": "link-email",
+      "external": false
+    },
+    {
+      "id": "twitter",
+      "name": "X / Twitter",
+      "desc": "Pensieri e aggiornamenti",
+      "url": "https://twitter.com/manuelzambelli",
+      "icon": "fa-brands fa-x-twitter",
+      "colorClass": "link-twitter",
+      "external": true
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "desc": "Messaggiami su Telegram",
+      "url": "https://t.me/manuelzambelli",
+      "icon": "fa-brands fa-telegram",
+      "colorClass": "link-telegram",
+      "external": true
+    },
+    {
+      "id": "cv",
+      "name": "Curriculum Vitae",
+      "desc": "Scarica il mio CV",
+      "url": "#",
+      "icon": "fa-solid fa-file-pdf",
+      "colorClass": "link-cv",
+      "external": false
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "desc": "Trovami su Discord",
+      "url": "https://discord.com/users/manuelzambelli",
+      "icon": "fa-brands fa-discord",
+      "colorClass": "link-discord",
+      "external": true
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "desc": "Momenti e ispirazioni",
+      "url": "https://www.instagram.com/manuelzambelli",
+      "icon": "fa-brands fa-instagram",
+      "colorClass": "link-instagram",
+      "external": true
+    }
+  ],
+  "skills": {
+    "bars": [
+      { "name": "HTML / CSS", "icon": "fa-brands fa-html5", "level": 85 },
+      { "name": "JavaScript", "icon": "fa-brands fa-js", "level": 75 },
+      { "name": "Python", "icon": "fa-brands fa-python", "level": 70 },
+      { "name": "Git & GitHub", "icon": "fa-brands fa-git-alt", "level": 60 },
+      { "name": "SQL / Databases", "icon": "fa-solid fa-database", "level": 55 },
+      { "name": "Linux / CLI", "icon": "fa-brands fa-linux", "level": 65 }
+    ],
+    "tags": [
+      { "name": "React", "color": "tag-blue" },
+      { "name": "Node.js", "color": "tag-cyan" },
+      { "name": "TypeScript", "color": "tag-purple" },
+      { "name": "Docker", "color": "tag-green" },
+      { "name": "VS Code", "color": "tag-orange" },
+      { "name": "REST API", "color": "tag-blue" },
+      { "name": "Figma", "color": "tag-cyan" },
+      { "name": "Postman", "color": "tag-purple" },
+      { "name": "MongoDB", "color": "tag-green" },
+      { "name": "Bash", "color": "tag-orange" },
+      { "name": "Networking", "color": "tag-blue" },
+      { "name": "Cybersecurity", "color": "tag-cyan" }
+    ],
+    "learning": ["Rust", "Machine Learning", "Web3"]
+  },
+  "timeline": [
+    {
+      "id": "t1",
+      "date": "2025 — Presente",
+      "title": "Istruzione Tecnica",
+      "desc": "Percorso scolastico in ambito tecnico-informatico, con focus su programmazione, reti e sistemi. Sviluppo di competenze pratiche attraverso progetti laboratoriali.",
+      "icon": "fa-solid fa-graduation-cap",
+      "tags": [
+        { "name": "Informatica", "color": "tag-blue" },
+        { "name": "Reti", "color": "tag-cyan" },
+        { "name": "Sistemi", "color": "tag-purple" }
+      ]
+    },
+    {
+      "id": "t2",
+      "date": "2024",
+      "title": "Primo Progetto Web Completo",
+      "desc": "Sviluppo del primo sito web completo utilizzando HTML, CSS e JavaScript vanilla. Implementazione di funzionalità interattive e design responsive.",
+      "icon": "fa-solid fa-code",
+      "tags": [
+        { "name": "HTML", "color": "tag-orange" },
+        { "name": "CSS", "color": "tag-blue" },
+        { "name": "JavaScript", "color": "tag-cyan" }
+      ]
+    },
+    {
+      "id": "t3",
+      "date": "2023",
+      "title": "Elettronica & Arduino",
+      "desc": "Primo approccio all'elettronica DIY con Arduino. Creazione di piccoli automatismi, sensori e progetti hardware integrati con software.",
+      "icon": "fa-solid fa-microchip",
+      "tags": [
+        { "name": "Arduino", "color": "tag-green" },
+        { "name": "C++", "color": "tag-orange" },
+        { "name": "Hardware", "color": "tag-purple" }
+      ]
+    },
+    {
+      "id": "t4",
+      "date": "2022",
+      "title": "Inizio del Viaggio Tech",
+      "desc": "Prime esperienze con la programmazione: Python per automazione e scripting. Scoperta del mondo open source e della community tech italiana.",
+      "icon": "fa-solid fa-rocket",
+      "tags": [
+        { "name": "Python", "color": "tag-blue" },
+        { "name": "Open Source", "color": "tag-cyan" }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "manuel.zambelli@email.com",
+    "telegram": "@manuelzambelli",
+    "telegramUrl": "https://t.me/manuelzambelli",
+    "linkedin": "Manuel Zambelli",
+    "linkedinUrl": "https://linkedin.com/in/manuelzambelli"
+  }
+}

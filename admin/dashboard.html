@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[MZ] Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+<div class="dash-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo"><span class="bracket">[</span>MZ<span class="bracket">]</span></span>
+      <span class="sidebar-subtitle mono">admin dashboard</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-panel="profile">
+        <i class="fa-solid fa-user"></i><span>Profilo</span>
+      </button>
+      <button class="nav-item" data-panel="about">
+        <i class="fa-solid fa-circle-info"></i><span>About</span>
+      </button>
+      <button class="nav-item" data-panel="links">
+        <i class="fa-solid fa-link"></i><span>Link Hub</span>
+      </button>
+      <button class="nav-item" data-panel="skills">
+        <i class="fa-solid fa-chart-bar"></i><span>Skills</span>
+      </button>
+      <button class="nav-item" data-panel="timeline">
+        <i class="fa-solid fa-timeline"></i><span>Timeline</span>
+      </button>
+      <button class="nav-item" data-panel="contact">
+        <i class="fa-solid fa-envelope"></i><span>Contatti</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="git-status-badge" id="gitStatusBadge">
+        <i class="fa-brands fa-github"></i>
+        <span id="gitBranch">caricamento...</span>
+      </div>
+      <a href="/site/index.html" target="_blank" class="preview-link">
+        <i class="fa-solid fa-eye"></i> Preview sito
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <div class="dash-main">
+
+    <!-- Header -->
+    <header class="dash-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="panel-title" id="panelTitle">Profilo</h1>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-save" id="saveBtn">
+          <i class="fa-solid fa-floppy-disk"></i>
+          <span>Salva</span>
+        </button>
+        <button class="btn btn-publish" id="publishBtn">
+          <i class="fa-brands fa-github"></i>
+          <span>Pubblica</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+      <i class="toast-icon"></i>
+      <span class="toast-msg"></span>
+    </div>
+
+    <!-- Content area -->
+    <div class="dash-content">
+
+      <!-- ═══ PANEL: PROFILO ═══ -->
+      <div class="panel active" id="panel-profile">
+        <div class="panel-grid">
+
+          <!-- Avatar -->
+          <div class="card col-span-1">
+            <div class="card-header"><i class="fa-solid fa-image"></i> Avatar</div>
+            <div class="avatar-upload-area" id="avatarDropzone">
+              <img src="/site/avatar.png" alt="avatar" class="avatar-preview" id="avatarPreview" />
+              <div class="avatar-overlay">
+                <i class="fa-solid fa-camera"></i>
+                <span>Cambia foto</span>
+              </div>
+              <input type="file" id="avatarInput" accept="image/png,image/jpeg,image/webp" hidden />
+            </div>
+            <button class="btn btn-outline btn-sm mt-1" onclick="document.getElementById('avatarInput').click()">
+              <i class="fa-solid fa-upload"></i> Carica immagine
+            </button>
+          </div>
+
+          <!-- Info base -->
+          <div class="card col-span-2">
+            <div class="card-header"><i class="fa-solid fa-id-card"></i> Informazioni base</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Nome completo</label>
+                <input type="text" class="form-input" id="p-name" placeholder="Manuel Zambelli" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Data di nascita</label>
+                <input type="text" class="form-input" id="p-birthday" placeholder="01/10/2010" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" class="form-input" id="p-location" placeholder="Italia" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nazionalità</label>
+                <input type="text" class="form-input" id="p-nationality" placeholder="🇮🇹 Italiana" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Focus</label>
+                <input type="text" class="form-input" id="p-focus" placeholder="Dev & Tech" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Lingue</label>
+                <input type="text" class="form-input" id="p-languages" placeholder="IT 🇮🇹 EN 🇬🇧" />
+              </div>
+            </div>
+            <div class="form-group mt-1">
+              <div class="toggle-row">
+                <div>
+                  <label class="form-label">Disponibile per opportunità</label>
+                  <p class="form-hint">Mostra il badge verde "Disponibile" nell'hero</p>
+                </div>
+                <label class="toggle">
+                  <input type="checkbox" id="p-available" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group" id="availableTextGroup">
+              <label class="form-label">Testo badge disponibilità</label>
+              <input type="text" class="form-input" id="p-availableText" placeholder="Disponibile per nuove opportunità" />
+            </div>
+          </div>
+
+          <!-- Taglines typewriter -->
+          <div class="card col-span-3">
+            <div class="card-header">
+              <span><i class="fa-solid fa-keyboard"></i> Frasi typewriter (hero)</span>
+              <button class="btn btn-xs btn-outline" id="addTaglineBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi
+              </button>
+            </div>
+            <div class="list-container" id="taglinesList"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ PANEL: ABOUT ═══ -->
+      <div class="panel" id="panel-about">
+        <div class="panel-grid">
+
+          <div class="card col-span-2">
+            <div class="card-header"><i class="fa-solid fa-pen"></i> Testo About</div>
+            <div class="form-group">
+              <label class="form-label">Introduzione <span class="hint">(supporta HTML: &lt;strong&gt;, &lt;em&gt;)</span></label>
+              <textarea class="form-input form-textarea" id="a-intro" rows="4" placeholder="Ciao! Sono..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Paragrafo principale</label>
+              <textarea class="form-input form-textarea" id="a-body" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Paragrafo extra (hobby/interessi)</label>
+              <textarea class="form-input form-textarea" id="a-extra" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="card col-span-1">
+            <div class="card-header"><i class="fa-solid fa-chart-simple"></i> Statistiche</div>
+            <div class="form-group">
+              <label class="form-label">Progetti completati</label>
+              <input type="number" class="form-input" id="a-projects" min="0" max="999" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Anni di esperienza</label>
+              <input type="number" class="form-input" id="a-years" min="0" max="99" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tecnologie usate</label>
+              <input type="number" class="form-input" id="a-tech" min="0" max="99" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ PANEL: LINKS ═══ -->
+      <div class="panel" id="panel-links">
+        <div class="panel-grid">
+          <div class="card col-span-3">
+            <div class="card-header">
+              <span><i class="fa-solid fa-link"></i> Link Hub — gestisci i link</span>
+              <button class="btn btn-xs btn-outline" id="addLinkBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi link
+              </button>
+            </div>
+            <div class="list-container" id="linksList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PANEL: SKILLS ═══ -->
+      <div class="panel" id="panel-skills">
+        <div class="panel-grid">
+
+          <div class="card col-span-2">
+            <div class="card-header">
+              <span><i class="fa-solid fa-bars-progress"></i> Barre skill</span>
+              <button class="btn btn-xs btn-outline" id="addSkillBarBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi
+              </button>
+            </div>
+            <div class="list-container" id="skillBarsList"></div>
+          </div>
+
+          <div class="card col-span-1">
+            <div class="card-header">
+              <span><i class="fa-solid fa-tags"></i> Tag tecnologie</span>
+              <button class="btn btn-xs btn-outline" id="addTagBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi
+              </button>
+            </div>
+            <div class="tags-editor" id="tagsEditor"></div>
+
+            <div class="card-header mt-2">
+              <span><i class="fa-solid fa-spinner"></i> Currently learning</span>
+              <button class="btn btn-xs btn-outline" id="addLearningBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi
+              </button>
+            </div>
+            <div class="list-container" id="learningList"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ PANEL: TIMELINE ═══ -->
+      <div class="panel" id="panel-timeline">
+        <div class="panel-grid">
+          <div class="card col-span-3">
+            <div class="card-header">
+              <span><i class="fa-solid fa-timeline"></i> Percorso — voci timeline</span>
+              <button class="btn btn-xs btn-outline" id="addTimelineBtn">
+                <i class="fa-solid fa-plus"></i> Aggiungi voce
+              </button>
+            </div>
+            <div class="list-container" id="timelineList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PANEL: CONTATTI ═══ -->
+      <div class="panel" id="panel-contact">
+        <div class="panel-grid">
+          <div class="card col-span-2">
+            <div class="card-header"><i class="fa-solid fa-address-book"></i> Informazioni di contatto</div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <div class="input-icon-wrap">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" class="form-input" id="c-email" placeholder="manuel@email.com" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telegram handle</label>
+              <div class="input-icon-wrap">
+                <i class="fa-brands fa-telegram"></i>
+                <input type="text" class="form-input" id="c-telegram" placeholder="@manuelzambelli" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telegram URL</label>
+              <div class="input-icon-wrap">
+                <i class="fa-solid fa-link"></i>
+                <input type="url" class="form-input" id="c-telegramUrl" placeholder="https://t.me/..." />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">LinkedIn nome visualizzato</label>
+              <div class="input-icon-wrap">
+                <i class="fa-brands fa-linkedin"></i>
+                <input type="text" class="form-input" id="c-linkedin" placeholder="Manuel Zambelli" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">LinkedIn URL</label>
+              <div class="input-icon-wrap">
+                <i class="fa-solid fa-link"></i>
+                <input type="url" class="form-input" id="c-linkedinUrl" placeholder="https://linkedin.com/in/..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="card col-span-1">
+            <div class="card-header"><i class="fa-brands fa-github"></i> Stato pubblicazione</div>
+            <div class="publish-info">
+              <div class="publish-info-row">
+                <span class="pi-label">Branch</span>
+                <span class="pi-val mono" id="pi-branch">—</span>
+              </div>
+              <div class="publish-info-row">
+                <span class="pi-label">Ultimo commit</span>
+                <span class="pi-val mono small" id="pi-commit">—</span>
+              </div>
+              <div class="publish-info-row">
+                <span class="pi-label">Remote</span>
+                <span class="pi-val mono small" id="pi-remote">—</span>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label class="form-label">Messaggio commit personalizzato</label>
+              <input type="text" class="form-input" id="commitMessage" placeholder="update: site content via dashboard" />
+            </div>
+            <button class="btn btn-publish btn-full mt-1" id="publishBtn2">
+              <i class="fa-brands fa-github"></i> Pubblica ora
+            </button>
+            <p class="form-hint mt-1">Salva i dati e fa un git push. GitHub Pages o Vercel aggiorneranno il sito automaticamente.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dash-content -->
+  </div><!-- /dash-main -->
+</div><!-- /dash-layout -->
+
+<!-- Publish modal -->
+<div class="modal-overlay" id="publishModal">
+  <div class="modal">
+    <div class="modal-icon"><i class="fa-brands fa-github"></i></div>
+    <h2 class="modal-title">Pubblica il sito</h2>
+    <p class="modal-desc">Salverà <code>data.json</code> e farà un <code>git push</code>. Il sito si aggiornerà automaticamente in ~30 secondi.</p>
+    <div class="form-group">
+      <label class="form-label">Messaggio commit</label>
+      <input type="text" class="form-input" id="modalCommitMsg" placeholder="update: site content via dashboard" />
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="modalCancel">Annulla</button>
+      <button class="btn btn-publish" id="modalConfirm">
+        <i class="fa-solid fa-rocket"></i> Conferma e pubblica
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

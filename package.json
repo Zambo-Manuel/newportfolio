@@ -1,0 +1,13 @@
+{
+  "name": "manuel-zambelli-personal-page",
+  "version": "1.0.0",
+  "description": "Pagina personale di Manuel Zambelli - stile futuristico/tech",
+  "scripts": {
+    "dev": "npx -y live-server . --port=3000",
+    "start": "npx -y live-server . --port=3000 --no-browser",
+    "preview": "npx -y serve . -p 3000"
+  },
+  "keywords": ["portfolio", "personal-page", "manuel-zambelli"],
+  "author": "Manuel Zambelli",
+  "license": "MIT"
+}
