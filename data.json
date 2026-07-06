@@ -3,6 +3,11 @@
     "name": "Manuel Zambelli",
     "birthday": "01/10/2010",
     "location": "Italia",
+    "nationality": "🇮🇹 Italiana",
+    "focus": "Dev & Tech",
+    "languages": "IT 🇮🇹 EN 🇬🇧",
+    "available": true,
+    "availableText": "Disponibile per nuove opportunità",
     "taglines": [
       "Developer & Tech Enthusiast",
       "Web Developer",
@@ -11,15 +16,10 @@
       "Lifelong Learner",
       "Digital Creator"
     ],
-    "available": true,
-    "availableText": "Disponibile per nuove opportunità",
-    "nationality": "🇮🇹 Italiana",
-    "focus": "Dev & Tech",
-    "languages": "IT 🇮🇹 EN 🇬🇧",
     "avatar": "avatar.png"
   },
   "about": {
-    "intro": "Ciao! Sono <strong>Manuel Zambelli</strong>, appassionato di tecnologia, informatica e innovazione digitale. Mi piace esplorare il confine tra creatività e logica, costruendo cose che funzionano <em>e</em> che hanno un senso.",
+    "intro": "Ciao! dfdf Sono <strong>Manuel Zambelli</strong>, appassionato di tecnologia, informatica e innovazione digitale. Mi piace esplorare il confine tra creatività e logica, costruendo cose che funzionano <em>e</em> che hanno un senso.",
     "body": "Amo lavorare su progetti che abbiano un impatto reale, dalla progettazione di interfacce utente intuitive allo sviluppo di sistemi back-end efficienti. Sono sempre alla ricerca di nuove sfide e opportunità di crescita.",
     "extra": "Quando non sono davanti a uno schermo mi interesso di gaming, elettronica DIY e rimango aggiornato sulle ultime tendenze nel mondo tech.",
     "stats": {
@@ -104,28 +104,92 @@
   ],
   "skills": {
     "bars": [
-      { "name": "HTML / CSS", "icon": "fa-brands fa-html5", "level": 85 },
-      { "name": "JavaScript", "icon": "fa-brands fa-js", "level": 75 },
-      { "name": "Python", "icon": "fa-brands fa-python", "level": 70 },
-      { "name": "Git & GitHub", "icon": "fa-brands fa-git-alt", "level": 60 },
-      { "name": "SQL / Databases", "icon": "fa-solid fa-database", "level": 55 },
-      { "name": "Linux / CLI", "icon": "fa-brands fa-linux", "level": 65 }
+      {
+        "name": "HTML / CSS",
+        "icon": "fa-brands fa-html5",
+        "level": 85
+      },
+      {
+        "name": "JavaScript",
+        "icon": "fa-brands fa-js",
+        "level": 75
+      },
+      {
+        "name": "Python",
+        "icon": "fa-brands fa-python",
+        "level": 70
+      },
+      {
+        "name": "Git & GitHub",
+        "icon": "fa-brands fa-git-alt",
+        "level": 60
+      },
+      {
+        "name": "SQL / Databases",
+        "icon": "fa-solid fa-database",
+        "level": 55
+      },
+      {
+        "name": "Linux / CLI",
+        "icon": "fa-brands fa-linux",
+        "level": 65
+      }
     ],
     "tags": [
-      { "name": "React", "color": "tag-blue" },
-      { "name": "Node.js", "color": "tag-cyan" },
-      { "name": "TypeScript", "color": "tag-purple" },
-      { "name": "Docker", "color": "tag-green" },
-      { "name": "VS Code", "color": "tag-orange" },
-      { "name": "REST API", "color": "tag-blue" },
-      { "name": "Figma", "color": "tag-cyan" },
-      { "name": "Postman", "color": "tag-purple" },
-      { "name": "MongoDB", "color": "tag-green" },
-      { "name": "Bash", "color": "tag-orange" },
-      { "name": "Networking", "color": "tag-blue" },
-      { "name": "Cybersecurity", "color": "tag-cyan" }
+      {
+        "name": "React",
+        "color": "tag-blue"
+      },
+      {
+        "name": "Node.js",
+        "color": "tag-cyan"
+      },
+      {
+        "name": "TypeScript",
+        "color": "tag-purple"
+      },
+      {
+        "name": "Docker",
+        "color": "tag-green"
+      },
+      {
+        "name": "VS Code",
+        "color": "tag-orange"
+      },
+      {
+        "name": "REST API",
+        "color": "tag-blue"
+      },
+      {
+        "name": "Figma",
+        "color": "tag-cyan"
+      },
+      {
+        "name": "Postman",
+        "color": "tag-purple"
+      },
+      {
+        "name": "MongoDB",
+        "color": "tag-green"
+      },
+      {
+        "name": "Bash",
+        "color": "tag-orange"
+      },
+      {
+        "name": "Networking",
+        "color": "tag-blue"
+      },
+      {
+        "name": "Cybersecurity",
+        "color": "tag-cyan"
+      }
     ],
-    "learning": ["Rust", "Machine Learning", "Web3"]
+    "learning": [
+      "Rust",
+      "Machine Learning",
+      "Web3"
+    ]
   },
   "timeline": [
     {
@@ -135,9 +199,18 @@
       "desc": "Percorso scolastico in ambito tecnico-informatico, con focus su programmazione, reti e sistemi. Sviluppo di competenze pratiche attraverso progetti laboratoriali.",
       "icon": "fa-solid fa-graduation-cap",
       "tags": [
-        { "name": "Informatica", "color": "tag-blue" },
-        { "name": "Reti", "color": "tag-cyan" },
-        { "name": "Sistemi", "color": "tag-purple" }
+        {
+          "name": "Informatica",
+          "color": "tag-blue"
+        },
+        {
+          "name": "Reti",
+          "color": "tag-cyan"
+        },
+        {
+          "name": "Sistemi",
+          "color": "tag-purple"
+        }
       ]
     },
     {
@@ -147,9 +220,18 @@
       "desc": "Sviluppo del primo sito web completo utilizzando HTML, CSS e JavaScript vanilla. Implementazione di funzionalità interattive e design responsive.",
       "icon": "fa-solid fa-code",
       "tags": [
-        { "name": "HTML", "color": "tag-orange" },
-        { "name": "CSS", "color": "tag-blue" },
-        { "name": "JavaScript", "color": "tag-cyan" }
+        {
+          "name": "HTML",
+          "color": "tag-blue"
+        },
+        {
+          "name": "CSS",
+          "color": "tag-cyan"
+        },
+        {
+          "name": "JavaScript",
+          "color": "tag-purple"
+        }
       ]
     },
     {
@@ -159,9 +241,18 @@
       "desc": "Primo approccio all'elettronica DIY con Arduino. Creazione di piccoli automatismi, sensori e progetti hardware integrati con software.",
       "icon": "fa-solid fa-microchip",
       "tags": [
-        { "name": "Arduino", "color": "tag-green" },
-        { "name": "C++", "color": "tag-orange" },
-        { "name": "Hardware", "color": "tag-purple" }
+        {
+          "name": "Arduino",
+          "color": "tag-blue"
+        },
+        {
+          "name": "C++",
+          "color": "tag-cyan"
+        },
+        {
+          "name": "Hardware",
+          "color": "tag-purple"
+        }
       ]
     },
     {
@@ -171,8 +262,14 @@
       "desc": "Prime esperienze con la programmazione: Python per automazione e scripting. Scoperta del mondo open source e della community tech italiana.",
       "icon": "fa-solid fa-rocket",
       "tags": [
-        { "name": "Python", "color": "tag-blue" },
-        { "name": "Open Source", "color": "tag-cyan" }
+        {
+          "name": "Python",
+          "color": "tag-blue"
+        },
+        {
+          "name": "Open Source",
+          "color": "tag-cyan"
+        }
       ]
     }
   ],
