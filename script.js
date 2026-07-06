@@ -204,24 +204,100 @@ function initCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
+// ── PRIVACY & COOKIE POLICY DIALOGS ────────────────────────────
+function initPrivacyAndCookies() {
+  const cookieBanner = document.getElementById('cookieBanner');
+  const privacyModal = document.getElementById('privacyModal');
+  const openPrivacyBtn = document.getElementById('openPrivacyBtn');
+  const closePrivacyBtn = document.getElementById('closePrivacyBtn');
+  const acceptPrivacyBtn = document.getElementById('acceptPrivacyBtn');
+  const cookiePolicyLink = document.getElementById('cookiePolicyLink');
+  
+  const acceptCookieBtn = document.getElementById('acceptCookieBtn');
+  const rejectCookieBtn = document.getElementById('rejectCookieBtn');
+
+  // Visibilità banner cookie
+  if (cookieBanner) {
+    const consent = localStorage.getItem('mz-cookie-consent');
+    if (!consent) {
+      setTimeout(() => cookieBanner.classList.add('show'), 1000);
+    }
+  }
+
+  // Pulsanti di accettazione cookie
+  if (acceptCookieBtn) {
+    acceptCookieBtn.addEventListener('click', () => {
+      localStorage.setItem('mz-cookie-consent', 'accepted');
+      cookieBanner.classList.remove('show');
+    });
+  }
+  if (rejectCookieBtn) {
+    rejectCookieBtn.addEventListener('click', () => {
+      localStorage.setItem('mz-cookie-consent', 'rejected');
+      cookieBanner.classList.remove('show');
+    });
+  }
+
+  // Gestione modali
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    if (privacyModal) privacyModal.classList.add('open');
+  };
+  const closeModal = () => {
+    if (privacyModal) privacyModal.classList.remove('open');
+  };
+
+  if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', openModal);
+  if (cookiePolicyLink) cookiePolicyLink.addEventListener('click', openModal);
+  if (closePrivacyBtn) closePrivacyBtn.addEventListener('click', closeModal);
+  if (acceptPrivacyBtn) {
+    acceptPrivacyBtn.addEventListener('click', () => {
+      closeModal();
+      const checkbox = document.getElementById('cf-privacy');
+      if (checkbox) checkbox.checked = true;
+    });
+  }
+
+  // Chiusura al click esterno
+  if (privacyModal) {
+    privacyModal.addEventListener('click', (e) => {
+      if (e.target === privacyModal) closeModal();
+    });
+  }
+}
+
 // ── CONTACT FORM ──────────────────────────────────────────────
+let targetFormEmail = 'manuel.zambelli@email.com';
+
 function initContactForm() {
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
   if (!contactForm) return;
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const inputs = contactForm.querySelectorAll('[required]');
     let valid = true;
+
     inputs.forEach(input => {
-      input.style.borderColor = '';
-      if (!input.value.trim()) { input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false; }
-      if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-        input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false;
+      if (input.type === 'checkbox') {
+        const wrapper = input.closest('.checkbox-wrapper');
+        if (!input.checked) {
+          if (wrapper) wrapper.style.color = '#ef4444';
+          valid = false;
+        } else {
+          if (wrapper) wrapper.style.color = '';
+        }
+      } else {
+        input.style.borderColor = '';
+        if (!input.value.trim()) { input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false; }
+        if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          input.style.borderColor = 'rgba(239,68,68,0.7)'; valid = false;
+        }
       }
     });
+
     if (!valid) return;
 
     const btnText = submitBtn.querySelector('.btn-text');
@@ -230,17 +306,66 @@ function initContactForm() {
     btnIcon.className = 'fa-solid fa-spinner fa-spin';
     submitBtn.disabled = true;
 
-    setTimeout(() => {
+    // Raccoglie i dati inseriti
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const subject = document.getElementById('cf-subject').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${targetFormEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message
+        })
+      });
+
+      const json = await res.json();
+      if (!res.ok || json.success === 'false') {
+        throw new Error((json && json.message) || 'Errore server');
+      }
+
       contactForm.reset();
+      formSuccess.style.color = 'var(--accent-green)';
+      formSuccess.style.background = 'rgba(16, 185, 129, 0.1)';
+      formSuccess.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+      formSuccess.innerHTML = '<i class="fa-solid fa-circle-check"></i> Messaggio inviato! Ti risponderò al più presto.';
+      formSuccess.classList.add('show');
+      setTimeout(() => formSuccess.classList.remove('show'), 6000);
+
+    } catch (err) {
+      console.error(err);
+      formSuccess.style.color = '#ef4444';
+      formSuccess.style.background = 'rgba(239, 68, 68, 0.1)';
+      formSuccess.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+      formSuccess.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Errore nell'invio: ${err.message || 'Riprova più tardi.'}`;
+      formSuccess.classList.add('show');
+      setTimeout(() => formSuccess.classList.remove('show'), 6000);
+    } finally {
       btnText.textContent = 'Invia messaggio';
       btnIcon.className = 'fa-solid fa-paper-plane';
       submitBtn.disabled = false;
-      formSuccess.classList.add('show');
-      setTimeout(() => formSuccess.classList.remove('show'), 5000);
-    }, 1800);
+    }
   });
 
-  contactForm.querySelectorAll('.form-input').forEach(i => i.addEventListener('input', () => { i.style.borderColor = ''; }));
+  contactForm.querySelectorAll('.form-input').forEach(i => {
+    i.addEventListener('input', () => { i.style.borderColor = ''; });
+  });
+
+  const privacyCheckbox = document.getElementById('cf-privacy');
+  if (privacyCheckbox) {
+    privacyCheckbox.addEventListener('change', () => {
+      const wrapper = privacyCheckbox.closest('.checkbox-wrapper');
+      if (wrapper) wrapper.style.color = '';
+    });
+  }
 }
 
 // ── DOM POPULATION HELPERS ────────────────────────────────────
@@ -458,6 +583,10 @@ async function loadData() {
     if (!res.ok) throw new Error('fetch failed');
     const data = await res.json();
 
+    if (data.contact) {
+      targetFormEmail = data.contact.formEmail || data.contact.email || targetFormEmail;
+    }
+
     renderHero(data);
     renderAbout(data);
     renderLinks(data);
@@ -476,6 +605,7 @@ async function loadData() {
   initReveal();
   initSkillBars();
   initCounters();
+  initPrivacyAndCookies();
   initContactForm();
 
   // Stagger reveals

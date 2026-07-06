@@ -437,6 +437,7 @@ function populateContact(c) {
   setVal('c-telegramUrl', c.telegramUrl);
   setVal('c-linkedin', c.linkedin);
   setVal('c-linkedinUrl', c.linkedinUrl);
+  setVal('c-formEmail', c.formEmail || c.email);
 }
 
 // ─── GATHER ALL DATA ──────────────────────────────────────────
@@ -473,6 +474,7 @@ function gatherAll() {
       telegramUrl: getVal('c-telegramUrl'),
       linkedin: getVal('c-linkedin'),
       linkedinUrl: getVal('c-linkedinUrl'),
+      formEmail: getVal('c-formEmail'),
     },
   };
 }
@@ -605,7 +607,16 @@ function esc(str) {
 function setLoading(btn, loading) {
   btn.disabled = loading;
   const icon = btn.querySelector('i');
-  if (icon) icon.className = loading ? 'fa-solid fa-spinner fa-spin' : btn.dataset.icon || icon.className;
+  if (icon) {
+    if (loading) {
+      if (!btn.dataset.originalIconClass) {
+        btn.dataset.originalIconClass = icon.className;
+      }
+      icon.className = 'fa-solid fa-spinner fa-spin';
+    } else {
+      icon.className = btn.dataset.originalIconClass || btn.dataset.icon || icon.className;
+    }
+  }
 }
 function makeListItem(value, onDelete) {
   const row = document.createElement('div');

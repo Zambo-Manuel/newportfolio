@@ -143,4 +143,12 @@ cd admin && node server.js
 
 ---
 
-© 2026 Manuel Zambelli. Built with ❤️ & code.
+## 🔒 Copyright & Licenza
+
+Tutti i diritti riservati. Il codice sorgente, il design, la struttura e tutti i contenuti testuali o grafici di questo repository sono di proprietà esclusiva di **Manuel Zambelli**.
+* **Non è consentito** copiare, riprodurre, ridistribuire o modificare questo progetto per utilizzarlo come proprio portfolio pubblico senza l'esplicito consenso scritto dell'autore.
+* Sentiti libero di consultare il codice sorgente esclusivamente a scopo didattico.
+
+---
+
+© 2026 Manuel Zambelli. Tutti i diritti riservati. Built with ❤️ & code.

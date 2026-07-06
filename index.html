@@ -271,6 +271,15 @@
                 <textarea id="cf-message" name="message" class="form-input form-textarea" placeholder="Scrivi il tuo messaggio qui..." rows="5" required></textarea>
               </div>
             </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" id="cf-privacy" name="privacy" required />
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">
+                  Accetto la <a href="#" id="openPrivacyBtn" class="policy-link">Privacy &amp; Cookie Policy</a> e acconsento al trattamento dei dati personali.
+                </span>
+              </label>
+            </div>
             <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
               <i class="fa-solid fa-paper-plane"></i>
               <span class="btn-text">Invia messaggio</span>
@@ -314,13 +323,61 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="mono-text">© 2026 Manuel Zambelli. Built with <i class="fa-solid fa-heart" style="color: var(--accent-cyan)"></i> &amp; code.</span>
+        <span class="mono-text">© 2026 Manuel Zambelli. Tutti i diritti riservati. È vietata la copia e la riproduzione. Built with <i class="fa-solid fa-heart" style="color: var(--accent-cyan)"></i> &amp; code.</span>
         <a href="#hero" class="back-to-top" aria-label="Torna su">
           <i class="fa-solid fa-chevron-up"></i>
         </a>
       </div>
     </div>
   </footer>
+
+  <!-- ===== PRIVACY MODAL ===== -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="policy-modal">
+      <div class="policy-modal-header">
+        <h3><i class="fa-solid fa-shield-halved"></i> Privacy &amp; Cookie Policy</h3>
+        <button class="close-policy-btn" id="closePrivacyBtn" aria-label="Chiudi informativa">&times;</button>
+      </div>
+      <div class="policy-modal-body">
+        <h4>1. Informazioni Generali</h4>
+        <p>Questa informativa descrive come questo sito personale gestisce il trattamento dei dati personali degli utenti che compilano il modulo di contatto.</p>
+        
+        <h4>2. Dati Raccolti</h4>
+        <p>Compilando il modulo di contatto, vengono raccolti i seguenti dati personali:</p>
+        <ul>
+          <li>Nome o pseudonimo fornito dall'utente.</li>
+          <li>Indirizzo email per poter rispondere alle richieste.</li>
+          <li>Oggetto e contenuto del messaggio inviato.</li>
+        </ul>
+
+        <h4>3. Finalità del Trattamento</h4>
+        <p>I dati vengono raccolti ed elaborati al solo scopo di rispondere alle tue richieste di contatto. I dati non vengono ceduti a terze parti né usati per scopi promozionali o commerciali.</p>
+
+        <h4>4. Base Giuridica del Trattamento</h4>
+        <p>Il trattamento dei dati personali si basa sul consenso esplicito dell'utente, fornito selezionando l'apposita casella obbligatoria prima dell'invio del modulo di contatto.</p>
+
+        <h4>5. Cookie Policy</h4>
+        <p>Questo sito utilizza solo cookie tecnici essenziali di sessione (ad esempio, per salvare le preferenze sul tema scuro/chiaro). Non vengono utilizzati cookie di tracciamento o di profilazione per scopi commerciali.</p>
+
+        <h4>6. Diritti dell'Utente</h4>
+        <p>L'utente può richiedere in qualsiasi momento la cancellazione o la modifica dei dati forniti contattando direttamente il proprietario all'indirizzo email indicato sul sito.</p>
+      </div>
+      <div class="policy-modal-footer">
+        <button class="btn btn-primary" id="acceptPrivacyBtn">Ho letto e acconsento</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COOKIE BANNER ===== -->
+  <div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-content">
+      <p><i class="fa-solid fa-cookie-bite"></i> Questo sito utilizza solo cookie tecnici essenziali per garantire una corretta navigazione ed esperienza d'uso. Leggi la nostra <a href="#" id="cookiePolicyLink">Privacy &amp; Cookie Policy</a>.</p>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-outline btn-sm" id="rejectCookieBtn" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer;">Rifiuta opzionali</button>
+        <button class="btn btn-primary btn-sm" id="acceptCookieBtn" style="padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; cursor: pointer;">Accetta tutto</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
